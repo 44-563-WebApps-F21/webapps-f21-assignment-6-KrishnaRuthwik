@@ -1,42 +1,91 @@
 <!DOCTYPE html>
 <html>
+ <head><title>JavaScript and DOM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script></head>
 
-<head>
-    <title>Java Script and DOM</title>
-    <script>
-        var correct = 0, wrong = 0;
-        function processPhrase() {
+<body style="padding-right: 30px; padding-left: 30px;" >
 
-            secretphrase = document.getElementById("secretphrase").value
-            checkphrase = document.getElementById("checkphrase").value
-            if (secretphrase == checkphrase) {
-                correct = correct + 1;
-                document.getElementById("result").innerHTML = "Correct count " + correct;
-                alert("access allowed");
-            } else {
+<h2 style="color: red; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Pass phrase by Ruthwik Koduru</h2>
 
-                wrong = wrong + 1;
-                document.getElementById("result").innerHTML = "Wrong count " + wrong;
-                alert("access denied");
-            }
-        }
-    </script>
-</head>
+<form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+    <label for="pass">Enter the secret phrase</label>
+    
+    <input type ="password" id="pass" class="form-control" name="password"  value="Let me in">
+</div>
+<br>
+<br>
+    <div class="form-group">
+    <label for="pwd">Enter a phrase </label>
+    <input type ="text" id="check" placeholder="Enter a Phrase" class="form-control"autofocus></div>
+<br>
+<br>
+    <input id="locked" class="btn btn-primary" type="button" onclick="processPhrase()"  value="Check the phrase"></div>
+</form>
+<br>
+<p  style="font-style: italic; color:blue"id ="result">This text will be replaced with Count of login </p>
+<div class="container" style="margin-left: 0px;">
+    <img id ="image" src="deer.jpg" alt="Deer Image"  onclick="newImage()" height="200" weight="200">
+    
+</div>
+<script>
 
-<body>
-    <h1>Pass phrase by Krishna Ruthwik Reddy Koduru </h1>
+ let correct=0,wrong=0;
+function processPhrase(){
+   var secret = document.getElementById("pass").value
+   var check = document.getElementById("check").value
+   result.style.color = "red"
+   out = document.getElementById("result")
+   if(secret == check)
+   {
+       correct = correct+1;
+       alert("Access Allowed")
+       out.innerHTML = "Correct Count : "+correct
+   }
+   else{
+       wrong = wrong+1;
+       alert("Access Denied")
+       out.innerHTML = "Wrong Count : "+wrong
+       if(wrong==3)
+   {
+    document.getElementById("locked").onclick = test();
+   }
+   }
+   
+}
+   let usingImage=1;
+    function newImage(){
 
-    <form>
-        <label for="secretphrase">Enter the secret phrase </label>
-        <input type="password" id="secretphrase" name="secretphrase" value="Let me in"> <br>
-        <label for="checkphrase">Enter a phrase</label>
-        <input type="text" id="checkphrase" name="checkphrase" autofocus> <br>
-        <br>
-        <input type="button" onclick="processPhrase()" value="Check the phrase">
-    </form>
+switch(usingImage){
+    case 1:
+    document.getElementById("image").src = "deer.jpg";
+    usingImage=usingImage+1;
+    break;
+    case 2:
+    document.getElementById("image").src="kangaroo.jpg";
+    usingImage=usingImage+2;
+    break;
+    case 3:
+    document.getElementById("image").src ="owl.jpg";
+    usingImage=1;
+    break;
+    default:
+    document.getElementById("image").src ="deer.jpg";   
+    usingImage=1;
 
-    <p id="result">Attempts display here </p>
+}
+ }
+function test(){
+   
+    out = document.getElementById("result")
+    alert("Account locked")
+    out.innerHTML = "Wrong Count : "+wrong
+}
+</script>
 
 </body>
-
 </html>
